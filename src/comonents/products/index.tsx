@@ -26,7 +26,7 @@ interface ISelect {
 interface IProps {
   search: string;
   products: IProduct[];
-  onSearch: (text: string) => string;
+  onSearch: (text: string) => void;
   isLoading: boolean;
   selectedProduct: ISelectedProduct[];
   setSelectedProduct: React.Dispatch<React.SetStateAction<ISelectedProduct[]>>;

@@ -63,7 +63,6 @@ export default function Home() {
 
   const onSearch = (input: string) => {
     setSearch(input);
-    return input;
   };
 
   useEffect(() => {
@@ -83,6 +82,8 @@ export default function Home() {
         setIsLoading(false);
         if (res.data) {
           setProducts(res.data);
+        } else {
+          setProducts([]);
         }
       } catch (error) {
         setIsLoading(false);

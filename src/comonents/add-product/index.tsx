@@ -4,12 +4,13 @@ import { IProduct } from "../../interface/product";
 import { VariableSizeList as List } from "react-window";
 import Row from "./Row";
 import { useEffect, useRef } from "react";
+import Loading from "../Loading";
 
 interface IProps {
   open: boolean;
   onClose: VoidFunction;
   search: string;
-  setSearch: (text: string) => string;
+  setSearch: (text: string) => void;
   products: IProduct[];
   selected: ISelect[];
   isLoading: boolean;
@@ -67,7 +68,13 @@ export default function AddProduct({
           </div>
         </div>
 
-        {products.length === 0 && (
+        {isLoading && (
+          <div className="flex justify-center">
+            <Loading />
+          </div>
+        )}
+
+        {products.length === 0 && !isLoading && (
           <div className="text-center">
             No product found matching for search "{search}"
           </div>
@@ -80,17 +87,11 @@ export default function AddProduct({
             itemCount={products.length}
             itemSize={getItemSize}
             width={"100%"}
-            overscanCount={20}
+            overscanCount={10}
             itemData={{ products, selected, onParentSelect, onChildSelect }}
           >
             {Row}
           </List>
-
-          {isLoading && (
-            <div>
-              <p className="text-center text-primary text-bold">Loading...</p>
-            </div>
-          )}
         </div>
 
         <div className="py-2 px-4 flex justify-between items-center border-t">
