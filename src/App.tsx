@@ -1,8 +1,14 @@
 import "./App.css";
-import AddProduct from "./pages/home";
+import Header from "./comonents/Header";
+import Home from "./pages/home";
 
 function App() {
-  return <AddProduct />;
+  return (
+    <>
+      <Header />
+      <Home />;
+    </>
+  );
 }
 
 export default App;

@@ -51,7 +51,7 @@ const Row: React.FC<ListChildComponentProps> = ({
 
         <div className="h-8 w-8 rounded-4 overflow-hidden">
           <img
-            src={product?.image?.src}
+            src={product?.image?.src || "/dummy.jpg"}
             className="h-full w-full  rounded-[4px]"
             loading="lazy"
           />

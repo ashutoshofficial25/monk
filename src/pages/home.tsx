@@ -128,7 +128,7 @@ export default function Home() {
 
               {selectedProduct.length === 0 && (
                 <div className="flex items-center gap-2">
-                  <img src="/assets/drag.png" />
+                  <img src="/drag.png" />
                   1.
                   <div className="bg-white rounded-md shadow-md border w-56 flex items-center pr-2">
                     <input
