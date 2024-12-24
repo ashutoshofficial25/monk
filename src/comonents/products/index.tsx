@@ -250,7 +250,10 @@ export default function Products({
         )}
       >
         <button
-          className="px-[54px] py-3 border border-primary  rounded-[4px]  text-primary font-semibold transition"
+          className={clsx(
+            "px-[54px] py-3 border border-primary  rounded-[4px]  text-primary font-semibold transition",
+            selectedProduct.length ? "ml-[115px]" : "ml-[115px]"
+          )}
           onClick={() => setOpen(true)}
         >
           Add Product
