@@ -1,50 +1,114 @@
-# React + TypeScript + Vite
+# Monk E-Commerce Task
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to the **Monk E-Commerce Application**! This project is a technical task demonstrating my skills in building dynamic and performant front-end applications using modern tools and libraries. The application is live at [Monk Ecomm](https://monk-ecomm.netlify.app/).
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Tech Stack
 
-## Expanding the ESLint configuration
+This project was bootstrapped using **Vite** for an optimized development experience, fast build times, and an up-to-date module system.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+---
 
-- Configure the top-level `parserOptions` property like this:
+## Features
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+- Drag-and-drop functionality for an intuitive user experience.
+- Virtualized lists for optimized rendering of large datasets.
+- API calls to fetch and display data dynamically.
+- Clean and responsive UI using Tailwind CSS.
+
+---
+
+## Installation & Running the Project
+
+### Prerequisites
+
+- Node.js (v14 or higher)
+- npm or yarn installed on your system
+
+### Steps
+
+1. **Clone the Repository:**
+
+   ```bash
+   git clone https://github.com/ashutoshofficial25/monk.git
+   cd monk
+   ```
+
+2. **Install Dependencies:**
+
+   ```bash
+   npm install
+   ```
+
+3. **Run the Development Server:**
+
+   ```bash
+   npm run dev
+   ```
+
+   The application will be accessible at `http://localhost:3000`.
+
+4. **Build for Production:**
+
+   ```bash
+   npm run build
+   ```
+
+   This will create a production-ready build in the `dist` folder.
+
+   Preview the production build locally.
+
+---
+
+## Dependencies Used
+
+### @dnd-kit/core
+
+- **Purpose:** Provides robust drag-and-drop functionality.
+- **Usage:** Utilized for implementing an intuitive drag-and-drop interface for moving items dynamically within the application.
+
+### react-window
+
+- **Purpose:** Optimizes rendering of large lists by only rendering visible items.
+- **Usage:** Used for displaying virtualized lists, ensuring the app remains fast and efficient with large datasets.
+
+### axios
+
+- **Purpose:** A promise-based HTTP client for making API requests.
+- **Usage:** Used to fetch data dynamically from APIs and integrate it into the UI seamlessly.
+
+### tailwind-css
+
+- **Purpose:** A utility-first CSS framework for building responsive and modern UIs quickly.
+- **Usage:** Applied for creating a clean and responsive design with minimal CSS boilerplate.
+
+### react-icons
+
+- **Purpose:** Provides a collection of popular icons for React applications.
+- **Usage:** Used to enhance the UI with visually appealing icons and improve user experience.
+
+---
+
+## Project Structure
+
+```plaintext
+src/
+├── public/        # Static assets like images or icons
+├── @types/        # Declare types and interfaces
+├── components/    # Reusable React components
+├── pages/         # Application pages
+├── utils/         # Utility functions
+├── App.jsx        # Main application component
+├── main.jsx       # Entry point of the application
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+---
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+## Feedback
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+If you have any feedback or suggestions, feel free to reach out to me via email or LinkedIn.
+
+---
+
+Thank you for reviewing this project!

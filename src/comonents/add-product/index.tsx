@@ -1,6 +1,6 @@
 import { CiSearch } from "react-icons/ci";
 import Dialog from "../Dialog";
-import { IProduct } from "../../interface/product";
+import { IProduct } from "../../@types/product";
 import { VariableSizeList as List } from "react-window";
 import Row from "./Row";
 import { useEffect, useRef } from "react";

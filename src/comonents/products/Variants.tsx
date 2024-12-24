@@ -10,7 +10,7 @@ import {
   SortableContext,
   sortableKeyboardCoordinates,
 } from "@dnd-kit/sortable";
-import { IVariant } from "../../interface/product";
+import { IVariant } from "../../@types/product";
 import { Fragment } from "react/jsx-runtime";
 import VariantItem from "./VariantItem";
 

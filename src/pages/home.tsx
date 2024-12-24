@@ -4,7 +4,7 @@ import { MdEdit } from "react-icons/md";
 
 import axiosInstance from "../utils/axios";
 
-import { IProduct, ISelectedProduct, IVariant } from "../interface/product";
+import { IProduct, ISelectedProduct, IVariant } from "../@types/product";
 
 import Products from "../comonents/products";
 import { API_KEY } from "../utils/configs";

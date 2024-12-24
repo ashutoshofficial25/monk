@@ -1,4 +1,4 @@
-import { ISelectedProduct, IVariant } from "../../interface/product";
+import { ISelectedProduct, IVariant } from "../../@types/product";
 import { MdEdit } from "react-icons/md";
 import { IoIosArrowDown, IoIosArrowUp, IoMdClose } from "react-icons/io";
 import Variants from "./Variants";

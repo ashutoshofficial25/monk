@@ -1,6 +1,6 @@
 import { Fragment, useState } from "react";
 
-import { IProduct, ISelectedProduct, IVariant } from "../../interface/product";
+import { IProduct, ISelectedProduct, IVariant } from "../../@types/product";
 import {
   DndContext,
   DragEndEvent,

@@ -1,13 +1,8 @@
 import { ListChildComponentProps } from "react-window";
-import { IProduct, IVariant } from "../../interface/product";
+import { IProduct, IVariant } from "../../@types/product";
 import Checkbox from "../Checkbox";
 
-const Row: React.FC<ListChildComponentProps> = ({
-  data,
-  style,
-  index,
-  isScrolling,
-}) => {
+const Row: React.FC<ListChildComponentProps> = ({ data, style, index }) => {
   const { products, selected, onParentSelect, onChildSelect } = data;
 
   const product: IProduct = products[index];

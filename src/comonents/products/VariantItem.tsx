@@ -1,4 +1,4 @@
-import { IVariant } from "../../interface/product";
+import { IVariant } from "../../@types/product";
 import { IoMdClose } from "react-icons/io";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSSProperties } from "react";
