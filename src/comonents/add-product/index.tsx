@@ -88,6 +88,7 @@ export default function AddProduct({
             itemSize={getItemSize}
             width={"100%"}
             overscanCount={10}
+            useIsScrolling
             itemData={{ products, selected, onParentSelect, onChildSelect }}
           >
             {Row}

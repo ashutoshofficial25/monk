@@ -32,10 +32,6 @@ const Row: React.FC<ListChildComponentProps> = ({
     else return false;
   };
 
-  if (isScrolling) {
-    return <div>Loading</div>;
-  }
-
   return (
     <div key={product.id} style={style}>
       <div className="py-4 px-7 border-t border-[rgba(0,0,0,0.10)] flex gap-x-4 items-center">
