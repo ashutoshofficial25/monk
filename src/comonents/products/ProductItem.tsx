@@ -105,7 +105,7 @@ export default function ProductItem({
         <div className="relative">
           {product.variants.length > 1 && (
             <div
-              className="flex justify-end mt-2 mb-4 text-[#006eff]"
+              className="flex justify-end mt-2 mb-4 text-[#006eff] cursor-pointer"
               onClick={() => handleShowVariant(product.id)}
             >
               <p className="text-xs underline">Show Variants</p>{" "}
