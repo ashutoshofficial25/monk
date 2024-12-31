@@ -34,7 +34,6 @@ export default function AddProduct({
   search,
   setSearch,
   selected,
-  isLoading,
   onAddProduct,
   onChildSelect,
   onParentSelect,
@@ -59,12 +58,6 @@ export default function AddProduct({
           </div>
         </div>
 
-        {/* {isLoading && (
-          <div className="flex justify-center">
-            <Loading />
-          </div>
-        )} */}
-
         {/* {products.length === 0 && !isLoading && (
           <div className="text-center">
             No product found matching for search "{search}"
@@ -81,7 +74,13 @@ export default function AddProduct({
               </div>
             }
             height={464}
-            endMessage={<div className="text-center">No Products .</div>}
+            endMessage={
+              <div className="text-center">
+                {search
+                  ? `No product found matching for search ${search}`
+                  : "No Products ."}
+              </div>
+            }
             hasMore={hasMore}
           >
             {products.map((el) => (
