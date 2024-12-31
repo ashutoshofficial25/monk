@@ -39,9 +39,11 @@ export default function AddProduct({
   onParentSelect,
 }: IProps) {
   function fetchMore() {
-    console.log("log: image");
+    console.log("log: more");
     setPage((prev: number) => prev + 1);
   }
+
+  console.log("log: pr", products);
 
   return (
     <div>
@@ -66,7 +68,7 @@ export default function AddProduct({
 
         <div className="w-full pr-1">
           <InfiniteScroll
-            dataLength={products.length + 10}
+            dataLength={products.length}
             next={fetchMore}
             loader={
               <div className="flex justify-center">

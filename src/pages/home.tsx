@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 
 import { MdEdit } from "react-icons/md";
 
@@ -9,6 +9,7 @@ import { IProduct, ISelectedProduct, IVariant } from "../@types/product";
 import Products from "../comonents/products";
 import { API_KEY } from "../utils/configs";
 import clsx from "clsx";
+import { debounce } from "../utils/functions";
 
 export default function Home() {
   const [page, setPage] = useState<number>(1);
@@ -62,11 +63,21 @@ export default function Home() {
 
     setSelectedProduct(data);
   };
+  const handleSearch = useCallback((input: string) => {
+    setPage(1);
+    setProducts([]);
+    setDebounceSearch(input);
+  }, []);
+
+  const debouncedSearch = useMemo(
+    () => debounce(handleSearch, 500),
+    [handleSearch]
+  );
 
   const onSearch = (input: string) => {
     setSearch(input);
+    debouncedSearch(input);
   };
-
   useEffect(() => {
     const getProduct = async () => {
       try {
@@ -86,9 +97,12 @@ export default function Home() {
 
         setIsLoading(false);
         if (res.data) {
+          if (res.data?.length < 10) setHasMore(false);
+          console.log("log: res", res.data);
           setProducts((prev) => [...prev, ...res.data]);
         } else {
-          setProducts([]);
+          console.log("log: empty");
+
           setHasMore(false);
         }
       } catch (error) {
@@ -98,18 +112,6 @@ export default function Home() {
     };
     getProduct();
   }, [page, debounceSearch]);
-
-  useEffect(() => {
-    const debounce = setTimeout(() => {
-      setPage(1);
-      setProducts([]);
-      setDebounceSearch(search);
-    }, 500);
-
-    return () => {
-      clearTimeout(debounce);
-    };
-  }, [search]);
 
   return (
     <div>
