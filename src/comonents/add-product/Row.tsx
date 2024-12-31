@@ -49,13 +49,11 @@ const Row = ({
         />
 
         <div className="h-8 w-8 rounded-4 overflow-hidden">
-          {/* <img
-            rel="prefetch"
-            src={product?.image?.src || "/dummy.jpg"}
+          <img
+            src={"/dummy.jpg"}
             className="h-full w-full  rounded-[4px]"
             loading="lazy"
-          /> */}
-          <LazyImage src={product?.image?.src || "/dummy.jpg"} alt="" />
+          />
         </div>
 
         <p className="text-base">{product.title}</p>
