@@ -1,5 +1,6 @@
 import { IProduct, IVariant } from "../../@types/product";
 import Checkbox from "../Checkbox";
+import LazyImage from "./LazyImage";
 
 const Row = ({
   product,
@@ -48,11 +49,12 @@ const Row = ({
         />
 
         <div className="h-8 w-8 rounded-4 overflow-hidden">
-          <img
+          {/* <img
             src={"/dummy.jpg"}
             className="h-full w-full  rounded-[4px]"
             loading="lazy"
-          />
+          /> */}
+          <LazyImage src={product?.image.src} alt="" />
         </div>
 
         <p className="text-base">{product.title}</p>
