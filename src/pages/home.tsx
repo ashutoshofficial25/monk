@@ -13,6 +13,8 @@ import clsx from "clsx";
 export default function Home() {
   const [page, setPage] = useState<number>(1);
 
+  const [hasMore, setHasMore] = useState(true);
+
   const [search, setSearch] = useState<string>("");
 
   const [debounceSearch, setDebounceSearch] = useState<string>("");
@@ -73,6 +75,7 @@ export default function Home() {
           limit: page * 10,
           search: debounceSearch,
         };
+        setHasMore(true);
         setIsLoading(true);
         const res = await axiosInstance.get("/products/search", {
           params,
@@ -86,6 +89,7 @@ export default function Home() {
           setProducts((prev) => [...prev, ...res.data]);
         } else {
           setProducts([]);
+          setHasMore(false);
         }
       } catch (error) {
         setIsLoading(false);
@@ -172,6 +176,7 @@ export default function Home() {
       <Products
         search={search}
         products={products}
+        hasMore={hasMore}
         isLoading={isLoading}
         setPage={setPage}
         onSearch={onSearch}

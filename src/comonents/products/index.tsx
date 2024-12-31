@@ -29,6 +29,7 @@ interface IProps {
   onSearch: (text: string) => void;
   isLoading: boolean;
   setPage: any;
+  hasMore: boolean;
   selectedProduct: ISelectedProduct[];
   setSelectedProduct: React.Dispatch<React.SetStateAction<ISelectedProduct[]>>;
   onRemoveVariant: (productId: number, variantId: number) => void;
@@ -41,6 +42,7 @@ export default function Products({
   search,
   setPage,
   products,
+  hasMore,
   onSearch,
   isLoading,
   selectedProduct,
@@ -268,6 +270,7 @@ export default function Products({
           onClose={handleClose}
           search={search}
           setPage={setPage}
+          hasMore={hasMore}
           setSearch={onSearch}
           onAddProduct={editId ? handleEditProduct : handleAddProduct}
           onParentSelect={handleParentSelect}

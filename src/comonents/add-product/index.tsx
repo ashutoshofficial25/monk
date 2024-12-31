@@ -9,6 +9,7 @@ interface IProps {
   open: boolean;
   onClose: VoidFunction;
   search: string;
+  hasMore: boolean;
   setSearch: (text: string) => void;
   products: IProduct[];
   selected: ISelect[];
@@ -27,6 +28,7 @@ interface ISelect {
 export default function AddProduct({
   open,
   onClose,
+  hasMore,
   products,
   setPage,
   search,
@@ -38,6 +40,7 @@ export default function AddProduct({
   onParentSelect,
 }: IProps) {
   function fetchMore() {
+    console.log("log: image");
     setPage((prev: number) => prev + 1);
   }
 
@@ -62,15 +65,15 @@ export default function AddProduct({
           </div>
         )} */}
 
-        {products.length === 0 && !isLoading && (
+        {/* {products.length === 0 && !isLoading && (
           <div className="text-center">
             No product found matching for search "{search}"
           </div>
-        )}
+        )} */}
 
         <div className="w-full pr-1">
           <InfiniteScroll
-            dataLength={products.length}
+            dataLength={products.length + 10}
             next={fetchMore}
             loader={
               <div className="flex justify-center">
@@ -78,8 +81,8 @@ export default function AddProduct({
               </div>
             }
             height={464}
-            endMessage={<>No more products...</>}
-            hasMore={true}
+            endMessage={<div className="text-center">No Products .</div>}
+            hasMore={hasMore}
           >
             {products.map((el) => (
               <Row
