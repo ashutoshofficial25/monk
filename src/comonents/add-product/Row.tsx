@@ -1,4 +1,3 @@
-import { ListChildComponentProps } from "react-window";
 import { IProduct, IVariant } from "../../@types/product";
 import Checkbox from "../Checkbox";
 import LazyImage from "./LazyImage";
@@ -50,7 +49,13 @@ const Row = ({
         />
 
         <div className="h-8 w-8 rounded-4 overflow-hidden">
-          <LazyImage src={"/dummy.jpg"} alt="" />
+          {/* <img
+            rel="prefetch"
+            src={product?.image?.src || "/dummy.jpg"}
+            className="h-full w-full  rounded-[4px]"
+            loading="lazy"
+          /> */}
+          <LazyImage src={product?.image?.src || "/dummy.jpg"} alt="" />
         </div>
 
         <p className="text-base">{product.title}</p>

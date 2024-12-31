@@ -1,9 +1,7 @@
 import { CiSearch } from "react-icons/ci";
 import Dialog from "../Dialog";
 import { IProduct } from "../../@types/product";
-import { VariableSizeList as List } from "react-window";
 import Row from "./Row";
-import { useEffect, useRef } from "react";
 import Loading from "../Loading";
 import InfiniteScroll from "react-infinite-scroll-component";
 
@@ -39,23 +37,6 @@ export default function AddProduct({
   onChildSelect,
   onParentSelect,
 }: IProps) {
-  const listRef = useRef<List>(null);
-
-  const getItemSize = (index: number) => {
-    let baseHeight = 57;
-    let childHeight = 57;
-
-    const h = baseHeight + childHeight * products[index]?.variants?.length;
-
-    return h;
-  };
-
-  useEffect(() => {
-    if (listRef.current) {
-      listRef.current.resetAfterIndex(0, true);
-    }
-  }, [products]);
-
   function fetchMore() {
     setPage((prev: number) => prev + 1);
   }
