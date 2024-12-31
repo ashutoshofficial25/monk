@@ -70,6 +70,7 @@ export default function Home() {
       try {
         let params = {
           page: page,
+          limit: page * 10,
           search: debounceSearch,
         };
         setIsLoading(true);
@@ -79,9 +80,10 @@ export default function Home() {
             "x-api-key": API_KEY,
           },
         });
+
         setIsLoading(false);
         if (res.data) {
-          setProducts(res.data);
+          setProducts((prev) => [...prev, ...res.data]);
         } else {
           setProducts([]);
         }
@@ -96,6 +98,7 @@ export default function Home() {
   useEffect(() => {
     const debounce = setTimeout(() => {
       setPage(1);
+      setProducts([]);
       setDebounceSearch(search);
     }, 500);
 
@@ -170,6 +173,7 @@ export default function Home() {
         search={search}
         products={products}
         isLoading={isLoading}
+        setPage={setPage}
         onSearch={onSearch}
         setSelectedProduct={setSelectedProduct}
         selectedProduct={selectedProduct}

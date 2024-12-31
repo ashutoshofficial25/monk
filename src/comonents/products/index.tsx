@@ -28,6 +28,7 @@ interface IProps {
   products: IProduct[];
   onSearch: (text: string) => void;
   isLoading: boolean;
+  setPage: any;
   selectedProduct: ISelectedProduct[];
   setSelectedProduct: React.Dispatch<React.SetStateAction<ISelectedProduct[]>>;
   onRemoveVariant: (productId: number, variantId: number) => void;
@@ -38,6 +39,7 @@ interface IProps {
 
 export default function Products({
   search,
+  setPage,
   products,
   onSearch,
   isLoading,
@@ -265,6 +267,7 @@ export default function Products({
           open={open}
           onClose={handleClose}
           search={search}
+          setPage={setPage}
           setSearch={onSearch}
           onAddProduct={editId ? handleEditProduct : handleAddProduct}
           onParentSelect={handleParentSelect}

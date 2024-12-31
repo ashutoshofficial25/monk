@@ -1,11 +1,20 @@
 import { ListChildComponentProps } from "react-window";
 import { IProduct, IVariant } from "../../@types/product";
 import Checkbox from "../Checkbox";
+import LazyImage from "./LazyImage";
 
-const Row: React.FC<ListChildComponentProps> = ({ data, style, index }) => {
-  const { products, selected, onParentSelect, onChildSelect } = data;
-
-  const product: IProduct = products[index];
+const Row = ({
+  product,
+  selected,
+  onParentSelect,
+  onChildSelect,
+}: {
+  selected: any;
+  onParentSelect: any;
+  onChildSelect: any;
+  product: IProduct;
+}) => {
+  // const product: IProduct = products[index];
 
   const isParentSelected = (productId: number) => {
     const checked = selected.find((el: any) => el.id === productId);
@@ -28,7 +37,7 @@ const Row: React.FC<ListChildComponentProps> = ({ data, style, index }) => {
   };
 
   return (
-    <div key={product.id} style={style}>
+    <div key={product.id}>
       <div className="py-4 px-7 border-t border-[rgba(0,0,0,0.10)] flex gap-x-4 items-center">
         <Checkbox
           checked={isParentSelected(product.id)}
@@ -41,11 +50,7 @@ const Row: React.FC<ListChildComponentProps> = ({ data, style, index }) => {
         />
 
         <div className="h-8 w-8 rounded-4 overflow-hidden">
-          <img
-            src={product?.image?.src || "/dummy.jpg"}
-            className="h-full w-full  rounded-[4px]"
-            loading="lazy"
-          />
+          <LazyImage src={"/dummy.jpg"} alt="" />
         </div>
 
         <p className="text-base">{product.title}</p>

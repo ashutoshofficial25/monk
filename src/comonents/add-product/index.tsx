@@ -5,6 +5,7 @@ import { VariableSizeList as List } from "react-window";
 import Row from "./Row";
 import { useEffect, useRef } from "react";
 import Loading from "../Loading";
+import InfiniteScroll from "react-infinite-scroll-component";
 
 interface IProps {
   open: boolean;
@@ -14,6 +15,7 @@ interface IProps {
   products: IProduct[];
   selected: ISelect[];
   isLoading: boolean;
+  setPage: any;
   onAddProduct: VoidFunction;
   onParentSelect: (productId: number, variantIds: number[]) => void;
   onChildSelect: (productId: number, variantId: number) => void;
@@ -28,6 +30,7 @@ export default function AddProduct({
   open,
   onClose,
   products,
+  setPage,
   search,
   setSearch,
   selected,
@@ -53,6 +56,10 @@ export default function AddProduct({
     }
   }, [products]);
 
+  function fetchMore() {
+    setPage((prev: number) => prev + 1);
+  }
+
   return (
     <div>
       <Dialog open={open} title="Select Product" onClose={onClose}>
@@ -68,11 +75,11 @@ export default function AddProduct({
           </div>
         </div>
 
-        {isLoading && (
+        {/* {isLoading && (
           <div className="flex justify-center">
             <Loading />
           </div>
-        )}
+        )} */}
 
         {products.length === 0 && !isLoading && (
           <div className="text-center">
@@ -81,18 +88,27 @@ export default function AddProduct({
         )}
 
         <div className="w-full pr-1">
-          <List
-            ref={listRef}
+          <InfiniteScroll
+            dataLength={products.length}
+            next={fetchMore}
+            loader={
+              <div className="flex justify-center">
+                <Loading />
+              </div>
+            }
             height={464}
-            itemCount={products.length}
-            itemSize={getItemSize}
-            width={"100%"}
-            overscanCount={10}
-            useIsScrolling
-            itemData={{ products, selected, onParentSelect, onChildSelect }}
+            endMessage={<>No more products...</>}
+            hasMore={true}
           >
-            {Row}
-          </List>
+            {products.map((el) => (
+              <Row
+                product={el}
+                onChildSelect={onChildSelect}
+                onParentSelect={onParentSelect}
+                selected={selected}
+              />
+            ))}
+          </InfiniteScroll>
         </div>
 
         <div className="py-2 px-4 flex justify-between items-center border-t">
