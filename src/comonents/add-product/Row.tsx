@@ -1,6 +1,5 @@
 import { IProduct, IVariant } from "../../@types/product";
 import Checkbox from "../Checkbox";
-import LazyImage from "./LazyImage";
 
 const Row = ({
   product,
